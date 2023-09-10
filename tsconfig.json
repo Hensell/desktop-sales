@@ -14,6 +14,7 @@
       "@layout/*": ["app/layout/*"]
          },
     "outDir": "./dist/out-tsc",
+    "strictPropertyInitialization": false,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,

@@ -12,7 +12,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component'
 
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +21,7 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
     FooterComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,

@@ -1,0 +1,14 @@
+<div>
+    <h2>Actualizar Producto</h2>
+    <form (ngSubmit)="actualizarProducto()">
+      <div>
+        <label for="nombre">Nombre del Producto:</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="producto.productName" required>
+      </div>
+      
+      <div>
+        <button type="submit">Actualizar</button>
+      </div>
+    </form>
+  </div>
+  

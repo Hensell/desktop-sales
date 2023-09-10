@@ -1,0 +1,32 @@
+<div>
+    <h2>Lista de productos</h2>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre del Producto</th>
+            <th>Marca</th>
+            <th>Categoría</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+            <th>Editar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of data">
+            <td>{{ product.productID }}</td>
+            <td>{{ product.productName }}</td>
+            <td>{{ product.brandID }}</td>
+            <td>{{ product.categoryID }}</td> 
+            <td>{{ product.active }}</td> 
+            <td>
+              <button (click)="eliminarProducto(product)" *ngIf="product.active">Eliminar</button>
+              <button (click)="ActualizarProducto(product)" *ngIf="!product.active">Restaurar</button>
+            </td>
+            <td>
+              <a [routerLink]="['/Product', product.productID, 'update']">Actualizar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>

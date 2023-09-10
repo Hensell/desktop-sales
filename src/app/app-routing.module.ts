@@ -15,7 +15,8 @@ const routes: Routes = [
       },
       {
         path: 'Product',
-        loadChildren: () => import('@modules/product-view/product-view.module').then((m): typeof ProductViewModule => m.ProductViewModule)
+        loadChildren: () => import('@modules/product-view/product-view.module').then((m): typeof ProductViewModule => m.ProductViewModule),
+        
 
       }
     ]

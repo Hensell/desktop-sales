@@ -1,1 +1,28 @@
-<p>create works!</p>
+<form (submit)="agregarProducto()">
+    <div class="form-group">
+      <label for="productName">Nombre del Producto:</label>
+      <input type="text" id="productName" [(ngModel)]="newProduct.productName" name="productName" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="productBarcode">Codigo de barras:</label>
+      <input type="text" id="productBarcode" [(ngModel)]="newProduct.productBarcode" name="productBarcode" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="productReference">Referencia del Producto:</label>
+      <input type="text" id="productReference" [(ngModel)]="newProduct.productReference" name="productReference" class="form-control">
+    </div>
+  
+   
+    <div class="form-group">
+      <label for="taxes">Impuestos:</label>
+      <input type="checkbox" id="taxes" [(ngModel)]="newProduct.taxes" name="taxes">
+    </div>
+    <div class="form-group">
+      <label for="forSale">Para venta:</label>
+      <input type="checkbox" id="forSale" [(ngModel)]="newProduct.forSale" name="forSale">
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Agregar Producto</button>
+  </form>
