@@ -23,6 +23,12 @@
       <label for="forSale">Para venta:</label>
       <input type="checkbox" id="forSale" [(ngModel)]="newProduct.forSale" name="forSale">
     </div>
-  
+
+    <select [(ngModel)]="newProduct.brandID" name="brandID">
+      <option value="" disabled selected>Selecciona una marca</option>
+      <option *ngFor="let marca of marcas" [value]="marca.brandID">{{ marca.brandName }}</option>
+    </select>
+
+
     <button type="submit" class="btn btn-primary">Agregar Producto</button>
   </form>

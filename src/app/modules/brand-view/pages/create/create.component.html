@@ -1,1 +1,10 @@
-<p>create works!</p>
+<form (submit)="agregarBrand()">
+    <div class="form-group">
+      <label for="brandtName">Nombre de la marca:</label>
+      <input type="text" id="brandName" [(ngModel)]="newBrand.brandName" name="brandName" class="form-control" required>
+    </div>
+
+   
+  
+    <button type="submit" class="btn btn-primary">Agregar Marca</button>
+  </form>

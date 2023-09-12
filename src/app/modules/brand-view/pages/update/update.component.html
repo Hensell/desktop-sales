@@ -1,1 +1,14 @@
-<p>update works!</p>
+<div>
+    <h2>Actualizar Brand</h2>
+    <form (ngSubmit)="actualizarBrand() ">
+      <div>
+        <label for="nombre">Nombre de la marca:</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="brand.brandName" required>
+      </div>
+      
+      <div>
+        <button type="submit">Actualizar</button>
+      </div>
+    </form>
+  </div>
+  

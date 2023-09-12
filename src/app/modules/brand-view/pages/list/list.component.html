@@ -1,1 +1,25 @@
-<p>list works!</p>
+<div>
+    <h2>Lista de marcas</h2>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre de la marca</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let brand of data">
+            <td>{{ brand.brandID }}</td>
+            <td>{{ brand.brandName }}</td>
+        
+            <td>
+              <button (click)="eliminarBrand(brand)" *ngIf="brand.active">Eliminar</button>
+              <button (click)="ActualizarBrand(brand)" *ngIf="!brand.active">Restaurar</button>
+            </td>
+            <td>
+              <a [routerLink]="['/Brand', brand.brandID , 'update']">Actualizar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>

@@ -22,7 +22,7 @@ export class ListComponent implements OnInit {
     });
   }
   eliminarProducto(product: ProductModel) {
-    // Llama al servicio para actualizar el estado del producto a inactivo (soft delete)
+   
     product.active = false;
     this.ProductService.putProduct(product).subscribe(() => {
       // Actualiza la vista o realiza cualquier acción necesaria
@@ -30,7 +30,7 @@ export class ListComponent implements OnInit {
   }
 
   ActualizarProducto(product: ProductModel) {
-    // Llama al servicio para actualizar el estado del producto a activo
+   
     product.active = true;
     this.ProductService.putProduct(product).subscribe(() => {
       // Actualiza la vista o realiza cualquier acción necesaria
