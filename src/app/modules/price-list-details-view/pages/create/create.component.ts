@@ -34,7 +34,7 @@ export class CreateComponent implements OnInit{
   }
 
   loadPriceListDetails() {
-    this.service.get(). subscribe((_model) => {
+    this.service.getByID(this.route.snapshot.paramMap.get('id')|| '0'). subscribe((_model) => {
       this.priceListDetails = _model; 
     });
   }
@@ -44,9 +44,37 @@ export class CreateComponent implements OnInit{
     this.model.active = true;
        this.service.post (this.model).subscribe((created) => {
          console.log('Pricle list creado:', created);
-        
-        
        });
-       this.router.navigate(['/PriceList/list']); }
+    //this.priceListDetails.push(this.model);
+   this.reloadCurrentRoute();
+      }
+      
+      getProductName(productId: number): any {
+        return this.product.find((p) => p.productID === productId);
+      }
 
+
+      reloadCurrentRoute() {
+        let currentUrl = this.router.url;
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+            this.router.navigate([currentUrl]);
+        });
+    }
+
+
+    delete(model: PriceListDetailsModel) {
+   
+      model.active = false;
+      this.service .put(model).subscribe(() => {
+        // Actualiza la vista o realiza cualquier acción necesaria
+      });
+    }
+  
+    update(model: PriceListDetailsModel) {
+     
+      model.active = true;
+      this.service.put(model).subscribe(() => {
+        // Actualiza la vista o realiza cualquier acción necesaria
+      });
+    }
 }

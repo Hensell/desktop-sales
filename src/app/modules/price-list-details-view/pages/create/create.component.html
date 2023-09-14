@@ -1,6 +1,6 @@
 <h2>Agregar precio</h2>
 <div id="FormBox">
-<form >
+<form (submit)="add()">
 
     <div class="form-group">
       <label for="price">Precio:</label>
@@ -10,13 +10,14 @@
       <option value="" disabled selected>Selecciona un producto</option>
       <option *ngFor="let _product of product" [value]="_product.productID">{{ _product.productID +'-'+ _product.productName }}</option>
     </select>
-    <button  type="submit" class="btn btn-primary" (click)="add()">Agregar</button>
+    <button  type="submit" class="btn btn-primary" >Agregar</button>
+ 
   </form>  
  </div>
 
  <div id = "caja-redonda">
   <h2>Lista de precios</h2>
-  <table class="table table-striped table-hover">
+  <table class="table table-striped table-hover" >
       <thead id="Header">
         <tr>
           <th>Company ID</th>
@@ -24,6 +25,8 @@
           <th>Price</th>
           <th>ProductID</th>
           <th>Active</th>
+          <th>Activar/Desactivar</th>
+          <th>Actualizar</th>
         </tr>
       </thead>
       <tbody>
@@ -31,17 +34,17 @@
           <td>{{ model.companyID}}</td>
           <td>{{ model.priceID }}</td>
           <td>{{ model.price }}</td>
-          <td>{{ model.productID }}</td>
+          <td>{{ model.productID +'-'+ getProductName(model.productID)?.productName}}</td>
           <td>{{ model.active }}</td> 
-    <!--      <td>
+         <td>
               <button class="btn btn-danger" (click)="delete(model)" *ngIf="model.active">Eliminar</button>
               <button class="btn btn-warning" (click)="update(model)" *ngIf="!model.active">Restaurar</button>
           </td>
            
           <td>
-              <a class="btn btn-warning"[routerLink]="['/PriceList', model.priceID, 'update']">Actualizar</a>
+              <a class="btn btn-warning"[routerLink]="['/PriceListDetails', model.priceID, 'update', model.productID]">Actualizar</a>
             </td>
-            <td>
+           <!--     <td>
               <a class="btn btn-warning"[routerLink]="['/PriceListDetails', model.priceID]">Agregar productos</a>
             </td> -->
         </tr>

@@ -1,0 +1,13 @@
+<h2>Modificar precio</h2>
+<div id="FormBox">
+<form (submit)="update()">
+
+    <div class="form-group">
+      <label for="price">Precio:</label>
+      <input type="text" id="price" [(ngModel)]="model.price" name="price" class="form-control" required>
+    </div>
+
+    <button  type="submit" class="btn btn-primary" >Actualizar</button>
+ 
+  </form>  
+ </div>

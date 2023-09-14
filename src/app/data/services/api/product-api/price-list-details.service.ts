@@ -28,7 +28,10 @@ export class PriceListDetailsService {
       return this.http.post<PriceListDetailsModel>(this.urlApi + 'PriceListDetails/CreatePriceListDetails', model);
     }
      
-    public getByID(Id: string): Observable<PriceListDetailsModel> {
-      return this.http.get<PriceListDetailsModel>(this.urlApi+`PriceListDetails/GetPriceListDetailsByID?ID=${Id}`); 
+    public getByID(Id: string): Observable<PriceListDetailsModel[]> {
+      return this.http.get<PriceListDetailsModel[]>(this.urlApi+`PriceListDetails/GetPriceListDetailsByID?ID=${Id}`); 
+    }
+    public getByIDProduct(Id: string, ProductID : string): Observable<PriceListDetailsModel> {
+      return this.http.get<PriceListDetailsModel>(this.urlApi+`PriceListDetails/GetPriceListDetailsByIDProduct?ID=${Id}&_ProductID=${ProductID}`); 
     }
 }
