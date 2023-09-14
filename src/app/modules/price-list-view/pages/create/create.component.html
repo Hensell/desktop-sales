@@ -1,0 +1,11 @@
+<h2>Agregar Lista de precio</h2>
+<div id="FormBox">
+<form (submit)="add()">
+
+    <div class="form-group">
+      <label for="productName">Nombre de la lista:</label>
+      <input type="text" id="productName" [(ngModel)]="model.priceName" name="priceName" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Agregar Producto</button>
+  </form>  
+ </div>

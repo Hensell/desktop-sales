@@ -30,7 +30,6 @@ export class CreateComponent implements OnInit {
     //TODO ir actulizando esto que va quemao
     this.newProduct.companyID =1;
     this.newProduct.supplierID =1;
- 
     this.newProduct.categoryID =1;
     this.newProduct.subCategoryID =1;
     this.newProduct.baseMeasureID =1;

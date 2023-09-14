@@ -1,0 +1,15 @@
+#FormBox {
+    max-width: 800px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #888888;
+    padding: 20px;
+    margin-left: 15px;
+    margin: auto;
+  }
+  h2 {
+    text-align:center; 
+ }
+ #nombre{
+    margin: 15px; 
+ }

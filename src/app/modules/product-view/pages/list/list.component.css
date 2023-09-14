@@ -1,0 +1,20 @@
+
+#caja-redonda {
+    background-color: #9d9c99;
+    box-shadow: 5px 5px 5px  #ddd9d9;
+    margin: 15px 15px 15px 15px;
+}
+
+th {
+    background:none; 
+    color: white;
+}
+tr {
+    background:none; 
+}
+thead {
+    background:none; 
+}
+h2 {
+    text-align:center; 
+}

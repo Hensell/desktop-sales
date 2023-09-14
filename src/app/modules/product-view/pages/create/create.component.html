@@ -1,3 +1,5 @@
+<h2>Agregar productos</h2>
+<div id="FormBox">
 <form (submit)="agregarProducto()">
     <div class="form-group">
       <label for="productName">Nombre del Producto:</label>
@@ -13,22 +15,27 @@
       <label for="productReference">Referencia del Producto:</label>
       <input type="text" id="productReference" [(ngModel)]="newProduct.productReference" name="productReference" class="form-control">
     </div>
-  
-   
-    <div class="form-group">
-      <label for="taxes">Impuestos:</label>
-      <input type="checkbox" id="taxes" [(ngModel)]="newProduct.taxes" name="taxes">
-    </div>
-    <div class="form-group">
-      <label for="forSale">Para venta:</label>
-      <input type="checkbox" id="forSale" [(ngModel)]="newProduct.forSale" name="forSale">
-    </div>
-
     <select [(ngModel)]="newProduct.brandID" name="brandID">
       <option value="" disabled selected>Selecciona una marca</option>
       <option *ngFor="let marca of marcas" [value]="marca.brandID">{{ marca.brandName }}</option>
     </select>
+    <div class="row">
+      <div class="column">
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox"  role="switch" id="taxes" [(ngModel)]="newProduct.taxes" name="taxes">
+      <label class="form-check-label" for="taxes">Impuestos:</label>
+    </div>
+  </div>
+  <div class="column">
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="forSale" [(ngModel)]="newProduct.forSale" name="forSale">
+      <label class="form-check-label" for="forSale">Para venta:</label>
+    </div> 
+  </div>
+</div>
+  
 
 
     <button type="submit" class="btn btn-primary">Agregar Producto</button>
-  </form>
+  </form>  
+ </div>

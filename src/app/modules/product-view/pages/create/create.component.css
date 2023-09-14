@@ -1,0 +1,30 @@
+#FormBox {
+    max-width: 800px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #888888;
+    padding: 20px;
+    margin-left: 15px;
+    margin: auto;
+  }
+#productName{
+    max-width: 750px;
+}
+#productBarcode{
+    max-width: 750px;
+  }
+#productReference{
+    max-width: 750px;
+      }
+h2 {
+    text-align:center; 
+ }
+ .column {
+    float: left;
+    width: 20%;
+  }
+ .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }

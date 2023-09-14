@@ -4,6 +4,8 @@ import { MainpageComponent } from '@layout/mainpage/mainpage.component';
 import { HomeModule } from '@modules/home/home.module';
 import { ProductViewModule } from '@modules/product-view/product-view.module';
 import { BrandViewModule } from '@modules/brand-view/brand-view.module'; 
+import { PriceListViewModule } from '@modules/price-list-view/price-list-view.module';
+import { PriceListDetailsViewModule } from '@modules/price-list-details-view/price-list-details-view.module';
 const routes: Routes = [
   {
     path: '',
@@ -17,15 +19,19 @@ const routes: Routes = [
       {
         path: 'Product',
         loadChildren: () => import('@modules/product-view/product-view.module').then((m): typeof ProductViewModule => m.ProductViewModule),
-        
-
-      },
+     },
       {
         path: 'Brand',
         loadChildren: () => import('@modules/brand-view/brand-view.module').then((m): typeof BrandViewModule => m.BrandViewModule),
-        
-
-      }
+   },
+   {
+     path: 'PriceList',
+     loadChildren: () => import('@modules/price-list-view/price-list-view.module').then((m): typeof PriceListViewModule => m.PriceListViewModule),
+},
+{
+  path: 'PriceListDetails',
+  loadChildren: () => import('@modules/price-list-details-view/price-list-details-view.module').then((m): typeof PriceListDetailsViewModule => m.PriceListDetailsViewModule),
+}
     ]
 
   }

@@ -1,1 +1,39 @@
-<p>header works!</p>
+<nav class="navbar navbar-expand-sm bg-light justify-content-center">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="#">Quantix</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"  aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="main_nav">
+      <ul class="navbar-nav">
+
+        <li class="nav-item dropdown" id="myDropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">  Producto  </a>
+            <ul class="dropdown-menu">
+              <li> <a class="dropdown-item" [routerLink]="['/Product']"> Crear</a></li>
+              <li> <a class="dropdown-item" [routerLink]="['/Product/list']"> Listar/Editar </a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown" id="myDropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">  Marcas  </a>
+            <ul class="dropdown-menu">
+              <li> <a class="dropdown-item" [routerLink]="['/Brand']"> Crear</a></li>
+              <li> <a class="dropdown-item" [routerLink]="['/Brand/list']"> Listar/Editar </a></li>
+            </ul>
+          </li>
+
+        <li class="nav-item dropdown" id="myDropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">  Lista de precio  </a>
+          <ul class="dropdown-menu">
+            <li> <a class="dropdown-item" [routerLink]="['/PriceList']"> Crear</a></li>
+            <li> <a class="dropdown-item" [routerLink]="['/PriceList/list']"> Listar/Editar </a></li>
+          </ul>
+        </li>
+        
+
+      </ul>
+    </div>
+    <!-- navbar-collapse.// -->
+    </div>
+    <!-- container-fluid.// -->
+    </nav>

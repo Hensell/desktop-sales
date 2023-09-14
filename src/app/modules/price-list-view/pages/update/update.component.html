@@ -1,0 +1,16 @@
+<h2>Actualizar Lista de precio</h2>
+<div  id="FormBox">
+ 
+   
+    <form (ngSubmit)="update()">
+      <div class="form-group">
+        <label for="nombre">Nombre de la lista de precio:</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="model.priceName" required>
+      </div>
+      
+      <div>
+        <button  class="btn btn-success"  type="submit">Actualizar</button>
+      </div>
+    </form>
+  </div>
+  

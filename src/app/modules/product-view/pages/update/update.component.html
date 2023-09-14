@@ -1,13 +1,15 @@
-<div>
-    <h2>Actualizar Producto</h2>
+<h2>Actualizar Producto</h2>
+<div  id="FormBox">
+ 
+   
     <form (ngSubmit)="actualizarProducto()">
-      <div>
+      <div class="form-group">
         <label for="nombre">Nombre del Producto:</label>
         <input type="text" id="nombre" name="nombre" [(ngModel)]="producto.productName" required>
       </div>
       
       <div>
-        <button type="submit">Actualizar</button>
+        <button  class="btn btn-success"  type="submit">Actualizar</button>
       </div>
     </form>
   </div>

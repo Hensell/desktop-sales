@@ -1,6 +1,6 @@
-<div>
+<div id = "caja-redonda">
     <h2>Lista de marcas</h2>
-    <table class="table">
+    <table class="table table-striped table-hover">
         <thead>
           <tr>
             <th>ID</th>
@@ -13,11 +13,11 @@
             <td>{{ brand.brandName }}</td>
         
             <td>
-              <button (click)="eliminarBrand(brand)" *ngIf="brand.active">Eliminar</button>
-              <button (click)="ActualizarBrand(brand)" *ngIf="!brand.active">Restaurar</button>
+              <button class="btn btn-danger" (click)="eliminarBrand(brand)" *ngIf="brand.active">Eliminar</button>
+              <button class="btn btn-warning" (click)="ActualizarBrand(brand)" *ngIf="!brand.active">Restaurar</button>
             </td>
             <td>
-              <a [routerLink]="['/Brand', brand.brandID , 'update']">Actualizar</a>
+              <a   class="btn btn-warning" [routerLink]="['/Brand', brand.brandID , 'update']">Actualizar</a>
             </td>
           </tr>
         </tbody>
