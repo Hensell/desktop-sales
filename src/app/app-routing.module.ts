@@ -6,13 +6,14 @@ import { ProductViewModule } from '@modules/product-view/product-view.module';
 import { BrandViewModule } from '@modules/brand-view/brand-view.module'; 
 import { PriceListViewModule } from '@modules/price-list-view/price-list-view.module';
 import { PriceListDetailsViewModule } from '@modules/price-list-details-view/price-list-details-view.module';
+import { WarehousesViewModule } from '@modules/warehouses-view/warehouses-view.module';
 const routes: Routes = [
   {
     path: '',
     component: MainpageComponent,
     children: [
       {
-        path: 'home',
+        path: '',
         loadChildren: () => import('@modules/home/home.module').then((m): typeof HomeModule => m.HomeModule)
 
       },
@@ -31,7 +32,11 @@ const routes: Routes = [
 {
   path: 'PriceListDetails',
   loadChildren: () => import('@modules/price-list-details-view/price-list-details-view.module').then((m): typeof PriceListDetailsViewModule => m.PriceListDetailsViewModule),
-}
+}   ,   {
+  path: 'Warehouse',
+  loadChildren: () => import('@modules/warehouses-view/warehouses-view.module').then((m): typeof WarehousesViewModule => m.WarehousesViewModule)
+
+},
     ]
 
   }
