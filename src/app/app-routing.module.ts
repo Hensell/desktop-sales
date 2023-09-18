@@ -7,6 +7,7 @@ import { BrandViewModule } from '@modules/brand-view/brand-view.module';
 import { PriceListViewModule } from '@modules/price-list-view/price-list-view.module';
 import { PriceListDetailsViewModule } from '@modules/price-list-details-view/price-list-details-view.module';
 import { WarehousesViewModule } from '@modules/warehouses-view/warehouses-view.module';
+import { InputsViewModule } from '@modules/inputs-view/inputs-view.module';
 const routes: Routes = [
   {
     path: '',
@@ -35,6 +36,11 @@ const routes: Routes = [
 }   ,   {
   path: 'Warehouse',
   loadChildren: () => import('@modules/warehouses-view/warehouses-view.module').then((m): typeof WarehousesViewModule => m.WarehousesViewModule)
+
+},
+{
+  path: 'Inputs',
+  loadChildren: () => import('@modules/inputs-view/inputs-view.module').then((m): typeof InputsViewModule => m.InputsViewModule)
 
 },
     ]
