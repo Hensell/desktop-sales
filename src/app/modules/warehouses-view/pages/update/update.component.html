@@ -1,1 +1,13 @@
-<p>update works!</p>
+<h2>Modificar Bodega</h2>
+<div id="FormBox">
+<form (submit)="update()">
+
+    <div class="form-group">
+      <label for="warehouse">Nombre:</label>
+      <input type="text" id="warehouse" [(ngModel)]="model.warehouseName" name="warehouse" class="form-control" required>
+    </div>
+
+    <button  type="submit" class="btn btn-primary" >Actualizar</button>
+ 
+  </form>  
+ </div>
