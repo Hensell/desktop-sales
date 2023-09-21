@@ -19,6 +19,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,11 @@ import {MatListModule} from '@angular/material/list';
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
-    MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule,MatListModule
+    MatToolbarModule, 
+    MatButtonModule, 
+    MatIconModule, 
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [
     {
