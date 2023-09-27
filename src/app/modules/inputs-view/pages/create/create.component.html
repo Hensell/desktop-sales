@@ -1,76 +1,109 @@
-<h2>Agregar Lista de precio</h2>
+<h2>Entradas</h2>
 <div id="FormBox">
-<form >
+  <form (submit)="post()">
+    <div class="form-group">
+      <select [(ngModel)]="model.warehouseID" name="warehouseID">
+        <option value="" disabled selected>Selecciona una bodega</option>
+        <option
+          *ngFor="let _warehouse of warehouse"
+          [value]="_warehouse.warehouseID"
+        >
+          {{ _warehouse.warehouseName }}
+        </option>
+      </select>
+      <select [(ngModel)]="model.inputTypeID" name="inputTypeID">
+        <option value="" disabled selected>Selecciona un tipo de movimiento</option>
+        <option
+          *ngFor="let _inputsTypes of inputsTypes"
+          [value]=" _inputsTypes.inputTypeID "
+        >
+          {{ _inputsTypes.inputTypeName }}
+        </option>
+      </select>
 
-  
-  <div class="form-group">
-    
-    <select [(ngModel)]="model.warehouseID" name="warehouseID">
-      <option value="" disabled selected>Selecciona una bodega</option>
-      <option *ngFor="let _warehouse of warehouse" [value]="_warehouse.warehouseID">{{ _warehouse.warehouseName }}</option>
-    </select>
-   
+      <input
+        type="text"
+        id="productName"
+        class="form-control"
+        name="productName"
+        [(ngModel)]="selectedProduct"
+        [matAutocomplete]="auto"
+        matInput
+        [formControl]="productInput"
+        placeholder="Nombre o ID del producto:"
+      />
 
-
-    <input type="text" 
-    id="productName" 
-    class="form-control" 
-    name="productName" 
-    [(ngModel)]="selectedProduct" 
-    [matAutocomplete]="auto"
-    matInput
-    [formControl]="productInput"
-  placeholder="Nombre o ID del producto:"
-    >
-
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" 
-    [displayWith]="displayProduct">
-
-      <mat-option *ngFor="let product of filteredProducts |async" [value]="product" (onSelectionChange)="onProductSelected($event)">
-        {{ product.productID }} - {{ product.productName }}
-      </mat-option>
-      
-    </mat-autocomplete>
-  </div>
-  
-    
-  </form>  
- </div>
-
- <div id = "caja-redonda">
-    <h2>Lista de productos</h2>
-    <table class="table table-striped table-hover">
-        <thead id="Header">
-          <tr>
-            <th>Acción</th>
-            <th>Product ID</th>
-            <th>Cantidad</th>
-            <th>Descuento</th>
-            <th>Precio unitario</th>
-            <th>Impuesto</th>
-            <th>Total</th>
-
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let model of model.listModel; let i = index">
-            <td>
-              <button class="btn btn-danger" (click)="eliminarRegistro(i)">
-                <i class="bi bi-trash"></i>
-              </button>
-            </td>
-            <td> {{ model.productID }}
-              {{ getProductNombre(model.productID) }} </td>
-            <td> <input [(ngModel)]="model.quantity"  (ngModelChange)="calculateLineTotal(model)" digitOnly ></td>
-
-            <td><input [(ngModel)]="model.discount" (ngModelChange)="calculateLineTotal(model)" digitOnly></td>
-            <td><input [(ngModel)]="model.unitPrice" (ngModelChange)="calculateLineTotal(model)" digitOnly></td>
-            <td><input [(ngModel)]="model.taxAmt" (ngModelChange)="calculateLineTotal(model)" digitOnly></td>
-            <td> {{model.lineTotal}}</td>
-   
-             
-      
-          </tr>
-        </tbody>
-      </table>
+      <mat-autocomplete
+        autoActiveFirstOption
+        #auto="matAutocomplete"
+        [displayWith]="displayProduct"
+      >
+        <mat-option
+          *ngFor="let product of filteredProducts | async"
+          [value]="product"
+          (onSelectionChange)="onProductSelected($event)"
+        >
+          {{ product.productID }} - {{ product.productName }}
+        </mat-option>
+      </mat-autocomplete>
     </div>
+    <button type="submit" class="btn btn-primary">Realizar entrada</button>
+  </form>
+</div>
+
+<div id="caja-redonda">
+  <h2>Lista de productos</h2>
+  <table class="table table-striped table-hover">
+    <thead id="Header">
+      <tr>
+        <th>Acción</th>
+        <th>Product ID</th>
+        <th>Cantidad</th>
+        <th>Descuento</th>
+        <th>Precio unitario</th>
+        <th>Impuesto</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let model of model.listModel; let i = index">
+        <td>
+          <button class="btn btn-danger" (click)="eliminarRegistro(i)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+        <td>{{ model.productID }} {{ getProductNombre(model.productID) }}</td>
+        <td>
+          <input
+            [(ngModel)]="model.quantity"
+            (ngModelChange)="calculateLineTotal(model)"
+            digitOnly
+          />
+        </td>
+
+        <td>
+          <input
+            [(ngModel)]="model.discount"
+            (ngModelChange)="calculateLineTotal(model)"
+            digitOnly
+          />
+        </td>
+        <td>
+          <input
+            [(ngModel)]="model.unitPrice"
+            (ngModelChange)="calculateLineTotal(model)"
+            digitOnly
+          />
+        </td>
+        <td>
+          <input
+            [(ngModel)]="model.taxAmt"
+            (ngModelChange)="calculateLineTotal(model)"
+            digitOnly
+          />
+        </td>
+        <td>{{ model.lineTotal }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

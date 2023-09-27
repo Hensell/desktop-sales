@@ -1,4 +1,5 @@
 <h2>Lista de productos</h2>
+<button (click)="openProductCreationDialog()">Crear Producto</button>
 <div id = "caja-redonda">
 
     <table class="table table-striped table-hover">
@@ -27,6 +28,7 @@
             <td>
               <a  class="btn btn-warning" [routerLink]="['/Product', product.productID, 'update']">Actualizar</a>
             </td>
+           
           </tr>
         </tbody>
       </table>

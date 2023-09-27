@@ -19,6 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {MatListModule} from '@angular/material/list';
     MatButtonModule, 
     MatIconModule, 
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ],
   providers: [
     {
