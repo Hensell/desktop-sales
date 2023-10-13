@@ -1,5 +1,7 @@
 <h2>Lista de productos</h2>
 <button (click)="openProductCreationDialog()">Crear Producto</button>
+
+
 <div id = "caja-redonda">
 
     <table class="table table-striped table-hover">
@@ -18,7 +20,7 @@
           <tr *ngFor="let product of data">
             <td>{{ product.productID }}</td>
             <td>{{ product.productName }}</td>
-            <td>{{ product.brandID }}</td>
+            <td>{{ product.brandID }} - {{ getBrandNombre(product.brandID) }} </td>
             <td>{{ product.categoryID }}</td> 
             <td>{{ product.active }}</td> 
             <td>

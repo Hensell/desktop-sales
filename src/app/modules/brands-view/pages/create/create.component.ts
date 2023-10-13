@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BrandService } from '@app/data/services/api/product-api/brand.service';
+import { BrandsService } from '@app/data/services/api/product-api/brands.service';
 import { BrandModel } from '@app/shared/models/brand-model';
 
 @Component({
@@ -10,7 +10,7 @@ import { BrandModel } from '@app/shared/models/brand-model';
 export class CreateComponent implements OnInit {
   newBrand: BrandModel = new BrandModel(); 
 
-  constructor(private bradService: BrandService) {}
+  constructor(private bradService: BrandsService) {}
 
   ngOnInit(): void {
   
@@ -23,7 +23,7 @@ export class CreateComponent implements OnInit {
   this.newBrand.active = true;
  
 
-    this.bradService .  postBrand(this.newBrand).subscribe((marcaCreada) => {
+    this.bradService .  post(this.newBrand).subscribe((marcaCreada) => {
 
       console.log('Marca creado:', marcaCreada);
       

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '@app/data/services/api/product-api/product.service';
+import { ProductsService } from '@app/data/services/api/product-api/products.service';
 import { ProductModel } from '@app/shared/models/product-model';
 
-import {  BrandService } from '@app/data/services/api/product-api/brand.service';
+import {  BrandsService } from '@app/data/services/api/product-api/brands.service';
 import { BrandModel } from '@app/shared/models/brand-model';
+
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create',
@@ -14,16 +16,24 @@ export class CreateComponent implements OnInit {
   newProduct: ProductModel = new ProductModel(); 
   marcas: BrandModel[] = [];
 
-  constructor(private productService: ProductService,
-    private brandService: BrandService) {}
+  constructor(private productService: ProductsService,
+    private brandService: BrandsService, public dialogRef: MatDialogRef<CreateComponent>) {}
 
   ngOnInit(): void {
     this.loadBrands();
+    this.newProduct.taxes = false;
+    this.newProduct.forSale = false;
   }
   loadBrands() {
-    this.brandService.getBrands().subscribe((brands) => {
+    this.brandService.get().subscribe((brands) => {
       this.marcas = brands; 
     });
+  }
+  onCancel() {
+    // Puedes realizar acciones de cancelación si es necesario
+  
+    // Cierra el diálogo sin guardar
+    this.dialogRef.close();
   }
   agregarProducto() {
 
@@ -38,7 +48,7 @@ export class CreateComponent implements OnInit {
     this.newProduct.defaultSaleMeasureID =1;
  
 
-    this.productService.postProduct(this.newProduct).subscribe((productoCreado) => {
+    this.productService.post(this.newProduct).subscribe((productoCreado) => {
 
       console.log('Producto creado:', productoCreado);
       

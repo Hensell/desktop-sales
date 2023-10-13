@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BrandModel } from '@app/shared/models/brand-model';
-import { BrandService } from '@app/data/services/api/product-api/brand.service';
+import { BrandsService } from '@app/data/services/api/product-api/brands.service';
 
 @Component({
   selector: 'app-list',
@@ -10,13 +10,13 @@ import { BrandService } from '@app/data/services/api/product-api/brand.service';
 export class ListComponent implements OnInit{
 
   data: BrandModel[] = [];
-  constructor(private BrandService: BrandService) { }
+  constructor(private BrandService: BrandsService) { }
   ngOnInit(): void {
     this.getBrands();
   }
 
   getBrands() {
-    this.BrandService.getBrands().subscribe((data: BrandModel[]) => {
+    this.BrandService.get().subscribe((data: BrandModel[]) => {
       this.data = data;
       console.log(this.data);
     });
@@ -24,7 +24,7 @@ export class ListComponent implements OnInit{
   eliminarBrand(brand: BrandModel) {
    
     brand.active = false;
-    this.BrandService.putBrand(brand).subscribe(() => {
+    this.BrandService.put(brand).subscribe(() => {
       // Actualiza la vista o realiza cualquier acción necesaria
     });
   }
@@ -32,7 +32,7 @@ export class ListComponent implements OnInit{
   ActualizarBrand(brand: BrandModel) {
    
     brand.active = true;
-    this.BrandService.putBrand(brand).subscribe(() => {
+    this.BrandService.put(brand).subscribe(() => {
       // Actualiza la vista o realiza cualquier acción necesaria
     });
   }

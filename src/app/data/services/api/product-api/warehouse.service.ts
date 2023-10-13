@@ -11,7 +11,7 @@ export class WarehouseService {
   constructor(private http: HttpClient) { }
 
   public get(): Observable<WarehousesModel[]> {
-    return this.http.get<WarehousesModel[]>(this.urlApi+'Warehouse/Get'); 
+    return this.http.get<WarehousesModel[]>(this.urlApi+'Warehouses/Get'); 
     }
 
     public put(model: WarehousesModel): Observable<WarehousesModel> {
@@ -21,14 +21,14 @@ export class WarehouseService {
         })
       };
   
-      return this.http.post<WarehousesModel>(this.urlApi + 'Warehouse/Update', model, httpOptions);
+      return this.http.post<WarehousesModel>(this.urlApi + 'Warehouses/Update', model, httpOptions);
     }
     public post(model: WarehousesModel): Observable<WarehousesModel> {
-      return this.http.post<WarehousesModel>(this.urlApi + 'Warehouse/Create', model);
+      return this.http.post<WarehousesModel>(this.urlApi + 'Warehouses/Create', model);
     }
      
     public getByID(Id: string): Observable<WarehousesModel> {
-      return this.http.get<WarehousesModel>(this.urlApi+`Warehouse/GetByID?ID=${Id}`); 
+      return this.http.get<WarehousesModel>(this.urlApi+`Warehouses/GetByID?ID=${Id}`); 
     }
    
 }

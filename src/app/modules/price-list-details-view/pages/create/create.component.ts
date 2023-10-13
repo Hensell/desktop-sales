@@ -3,7 +3,7 @@ import { PriceListDetailsService } from '@app/data/services/api/product-api/pric
 import { PriceListDetailsModel } from '@app/shared/models/price-list-details-model';
 
 
-import {  ProductService } from '@app/data/services/api/product-api/product.service';
+import {  ProductsService } from '@app/data/services/api/product-api/products.service';
 import { ProductModel } from '@app/shared/models/product-model';
 
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,7 +18,7 @@ export class CreateComponent implements OnInit{
   priceListDetails: PriceListDetailsModel[] = [];
 
   constructor(private service: PriceListDetailsService, 
-    private productService: ProductService,
+    private productService: ProductsService,
     private route: ActivatedRoute,
     private router: Router
     ) {}
@@ -28,7 +28,7 @@ export class CreateComponent implements OnInit{
     this.loadPriceListDetails();
   }
   loadProducts() {
-    this.productService.getProducts(). subscribe((_products) => {
+    this.productService.get(). subscribe((_products) => {
       this.product = _products; 
     });
   }

@@ -12,7 +12,7 @@ export class PriceListDetailsService {
   constructor(private http: HttpClient) { }
 
   public get(): Observable<PriceListDetailsModel[]> {
-    return this.http.get<PriceListDetailsModel[]>(this.urlApi+'PriceListDetails/GetPriceDetailsList'); 
+    return this.http.get<PriceListDetailsModel[]>(this.urlApi+'PriceListDetails/Get'); 
     }
 
     public put(model: PriceListDetailsModel): Observable<PriceListDetailsModel> {
@@ -22,16 +22,16 @@ export class PriceListDetailsService {
         })
       };
   
-      return this.http.post<PriceListDetailsModel>(this.urlApi + 'PriceListDetails/UpdatePriceListDetails', model, httpOptions);
+      return this.http.post<PriceListDetailsModel>(this.urlApi + 'PriceListDetails/Update', model, httpOptions);
     }
     public post(model: PriceListDetailsModel): Observable<PriceListDetailsModel> {
-      return this.http.post<PriceListDetailsModel>(this.urlApi + 'PriceListDetails/CreatePriceListDetails', model);
+      return this.http.post<PriceListDetailsModel>(this.urlApi + 'PriceListDetails/Create', model);
     }
      
     public getByID(Id: string): Observable<PriceListDetailsModel[]> {
-      return this.http.get<PriceListDetailsModel[]>(this.urlApi+`PriceListDetails/GetPriceListDetailsByID?ID=${Id}`); 
+      return this.http.get<PriceListDetailsModel[]>(this.urlApi+`PriceListDetails/GetByID?ID=${Id}`); 
     }
     public getByIDProduct(Id: string, ProductID : string): Observable<PriceListDetailsModel> {
-      return this.http.get<PriceListDetailsModel>(this.urlApi+`PriceListDetails/GetPriceListDetailsByIDProduct?ID=${Id}&_ProductID=${ProductID}`); 
+      return this.http.get<PriceListDetailsModel>(this.urlApi+`PriceListDetails/GetByIDProduct?ID=${Id}&_ProductID=${ProductID}`); 
     }
 }

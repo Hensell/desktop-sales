@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrandRoutingModule } from './brand-view-routing.module';
+import { BrandRoutingModule } from './brands-view-routing.module';
 import { SharedModule } from '@app/shared/shared.module';
 import { CreateComponent } from './pages/create/create.component';
 import { ListComponent } from './pages/list/list.component';

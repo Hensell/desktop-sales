@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainpageComponent } from '@layout/mainpage/mainpage.component';
 import { HomeModule } from '@modules/home/home.module';
-import { ProductViewModule } from '@modules/product-view/product-view.module';
-import { BrandViewModule } from '@modules/brand-view/brand-view.module'; 
+import { ProductViewModule } from '@modules/products-view/products-view.module';
+import { BrandViewModule } from '@modules/brands-view/brands-view.module'; 
 import { PriceListViewModule } from '@modules/price-list-view/price-list-view.module';
 import { PriceListDetailsViewModule } from '@modules/price-list-details-view/price-list-details-view.module';
 import { WarehousesViewModule } from '@modules/warehouses-view/warehouses-view.module';
@@ -20,11 +20,11 @@ const routes: Routes = [
       },
       {
         path: 'Product',
-        loadChildren: () => import('@modules/product-view/product-view.module').then((m): typeof ProductViewModule => m.ProductViewModule),
+        loadChildren: () => import('@modules/products-view/products-view.module').then((m): typeof ProductViewModule => m.ProductViewModule),
      },
       {
         path: 'Brand',
-        loadChildren: () => import('@modules/brand-view/brand-view.module').then((m): typeof BrandViewModule => m.BrandViewModule),
+        loadChildren: () => import('@modules/brands-view/brands-view.module').then((m): typeof BrandViewModule => m.BrandViewModule),
    },
    {
      path: 'PriceList',

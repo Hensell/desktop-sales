@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '@app/data/services/api/product-api/product.service';
+import { ProductsService } from '@app/data/services/api/product-api/products.service';
 import { ProductModel } from '@app/shared/models/product-model';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateComponent } from '../create/create.component';
 
+import {  BrandsService } from '@app/data/services/api/product-api/brands.service';
+import { BrandModel } from '@app/shared/models/brand-model';
 
 @Component({
   selector: 'app-list',
@@ -24,20 +26,35 @@ export class ListComponent implements OnInit {
   }
 
   data: ProductModel[] = [];
-  constructor(private ProductService: ProductService, public dialog: MatDialog) { }
+  marcas: BrandModel[] = [];
+  constructor(private ProductService: ProductsService,  private brandService: BrandsService,
+    public dialog: MatDialog) { }
+
+
   ngOnInit(): void {
     this.getProducts();
+    this.loadBrands();
   }
+  loadBrands() {
+    this.brandService.get().subscribe((brands) => {
+      this.marcas = brands; 
+    });
+  }
+
   getProducts() {
-    this.ProductService.getProducts().subscribe((data: ProductModel[]) => {
+    this.ProductService.get().subscribe((data: ProductModel[]) => {
       this.data = data;
       console.log(this.data);
     });
   }
+  getBrandNombre(BrandID: number): string {
+    const brands = this.marcas.find((p) => p.brandID === BrandID);
+    return brands ? brands.brandName  : ''; // Devuelve el nombre si se encuentra, de lo contrario, una cadena vacía
+  }
   eliminarProducto(product: ProductModel) {
    
     product.active = false;
-    this.ProductService.putProduct(product).subscribe(() => {
+    this.ProductService.put(product).subscribe(() => {
       // Actualiza la vista o realiza cualquier acción necesaria
     });
   }
@@ -45,7 +62,7 @@ export class ListComponent implements OnInit {
   ActualizarProducto(product: ProductModel) {
    
     product.active = true;
-    this.ProductService.putProduct(product).subscribe(() => {
+    this.ProductService.put(product).subscribe(() => {
       // Actualiza la vista o realiza cualquier acción necesaria
     });
   }

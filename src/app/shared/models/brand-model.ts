@@ -1,7 +1,7 @@
 export class BrandModel {
     companyID: number;
     brandID: number;
-    brandName: String;
+    brandName: string;
     active: boolean;
 
   }

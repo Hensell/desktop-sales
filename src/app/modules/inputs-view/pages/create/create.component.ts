@@ -4,7 +4,7 @@ import { InputsModel } from '@app/shared/models/inputs-model';
 import { InputsDetailsModel } from '@app/shared/models/inputs-details-model';
 
 import { ProductModel } from '@app/shared/models/product-model';
-import { ProductService } from '@app/data/services/api/product-api/product.service';
+import { ProductsService } from '@app/data/services/api/product-api/products.service';
 
 import { WarehouseService } from '@app/data/services/api/product-api/warehouse.service';
 import { WarehousesModel } from '@app/shared/models/warehouses-model';
@@ -35,7 +35,7 @@ export class CreateComponent {
 
   constructor(
     private service: InputsService,
-    private productService: ProductService,
+    private productService: ProductsService,
     private warehouseService: WarehouseService,
     private inputsTypesService: InputsTypesService
   ) {
@@ -116,6 +116,7 @@ export class CreateComponent {
     this.model.totalDue = sumatoria.lineTotal;
     this.model.currencyCode = 'C';
     this.model.status = 1;
+
     this.service.post(this.model).subscribe((_model) => {
 
       console.log('Producto creado:', _model);
@@ -124,7 +125,7 @@ export class CreateComponent {
     });
   }
   loadProducts() {
-    this.productService.getProducts().subscribe((_products) => {
+    this.productService.get().subscribe((_products) => {
       this.products = _products;
       this.filteredProducts = this.productInput.valueChanges.pipe(
         startWith(''),
@@ -148,10 +149,6 @@ export class CreateComponent {
     const newData = { ...this.data }; // Clonar this.data
 
     newData.productID = this.selectedProduct?.productID || 0;
-    newData.companyID = 1;
-    newData.branchID = 1;
-    newData.warehouseID = this.model.warehouseID;
-    newData.inputTypeID = this.model.inputTypeID;
     newData.measureID = 1;
     newData.quantity = 0;
     newData.discount = 0;

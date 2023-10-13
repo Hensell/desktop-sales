@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BrandService } from '@app/data/services/api/product-api/brand.service';
+import { BrandsService } from '@app/data/services/api/product-api/brands.service';
 import { BrandModel } from '@app/shared/models/brand-model';
 
 @Component({
@@ -13,18 +13,18 @@ export class UpdateComponent implements OnInit{
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private brandService: BrandService
+    private brandService: BrandsService
   ) {}
   ngOnInit(): void {
     
     const brandId = this.route.snapshot.paramMap.get('id')|| '0';
-    this.brandService.getBrandbyID (brandId).subscribe((data: BrandModel) => {
+    this.brandService.getbyID (brandId).subscribe((data: BrandModel) => {
       this.brand = data;
     });
   }
 
   actualizarBrand() {
-    this.brandService.putBrand  (this.brand).subscribe(() => {
+    this.brandService.put (this.brand).subscribe(() => {
     this.router.navigate(['/Brand/list']);
   });
 }

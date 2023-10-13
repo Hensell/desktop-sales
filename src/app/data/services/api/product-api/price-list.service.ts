@@ -11,7 +11,7 @@ export class PriceListService {
   constructor(private http: HttpClient) { }
 
   public getPriceList(): Observable<PriceListModel[]> {
-    return this.http.get<PriceListModel[]>(this.urlApi+'PriceList/GetPriceList'); 
+    return this.http.get<PriceListModel[]>(this.urlApi+'PriceList/Get'); 
     }
 
     public putPriceList(model: PriceListModel): Observable<PriceListModel> {
@@ -21,13 +21,13 @@ export class PriceListService {
         })
       };
   
-      return this.http.post<PriceListModel>(this.urlApi + 'PriceList/UpdatePriceList', model, httpOptions);
+      return this.http.post<PriceListModel>(this.urlApi + 'PriceList/Update', model, httpOptions);
     }
     public postPriceList(model: PriceListModel): Observable<PriceListModel> {
-      return this.http.post<PriceListModel>(this.urlApi + 'PriceList/CreatePriceList', model);
+      return this.http.post<PriceListModel>(this.urlApi + 'PriceList/Create', model);
     }
      
     public getByID(Id: string): Observable<PriceListModel> {
-      return this.http.get<PriceListModel>(this.urlApi+`PriceList/GetPriceListByID?ID=${Id}`); 
+      return this.http.get<PriceListModel>(this.urlApi+`PriceList/GetByID?ID=${Id}`); 
     }
 }

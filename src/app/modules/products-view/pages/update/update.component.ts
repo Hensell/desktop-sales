@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '@app/data/services/api/product-api/product.service';
+import { ProductsService } from '@app/data/services/api/product-api/products.service';
 import { ProductModel } from '@app/shared/models/product-model';
 
 
@@ -15,20 +15,20 @@ export class UpdateComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productService: ProductService
+    private productService: ProductsService
   ) {}
 
   ngOnInit(): void {
     
     const productId = this.route.snapshot.paramMap.get('id')|| '0';
-    this.productService.getProductbyID(productId).subscribe((data: ProductModel) => {
+    this.productService.getByID(productId).subscribe((data: ProductModel) => {
       this.producto = data;
     });
   }
 
   actualizarProducto() {
     
-      this.productService.putProduct(this.producto).subscribe(() => {
+      this.productService.put(this.producto).subscribe(() => {
       this.router.navigate(['/Product/list']);
     });
   }
